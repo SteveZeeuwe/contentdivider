@@ -1,7 +1,7 @@
 /**
  * @file ContentDivider.js
  *
- * Simple explanation
+ * Render content items onto templates.
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
  * @version 1.0.0
@@ -13,6 +13,7 @@ class ContentDivider{
 		this.contentItems = this.getContentItems();
 		this.contentDestination = this.getContentDestination();
 		this.pages = [];
+		this.templates = {};
 
 		if(!this.checkPrerequisites()){
 			return;
@@ -63,7 +64,6 @@ class ContentDivider{
 		return null;
 	}
 
-
 	/**
 	 * Check whether we should continue or not.
 	 */
@@ -81,7 +81,6 @@ class ContentDivider{
 	 * @returns {Boolean}
 	 */
 	initTemplates() {
-		this.templates = {};
 
 		let page = this.contentDestination.querySelector('[data-template=page]');
 
