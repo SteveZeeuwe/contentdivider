@@ -78,22 +78,23 @@ class ContentDivider{
 	 * @returns {Boolean}
 	 */
 	getTemplates() {
-
 		const pages = ['page', 'firstPage'];
 		const templates = {};
 
-		pages.forEach((page) => {
-			let currentPage = this.contentDestination.querySelector(`[data-template=${page}]`);
-
-			if (!currentPage) {
-				console.log('ContentDivider: page template not found for: ' + this.contentId);
-			}
-			else {
-				templates[page] = currentPage.cloneNode(true);
-
-				currentPage.remove();
-			}
-		});
+		if(contentDestination){
+			pages.forEach((page) => {
+				let currentPage = this.contentDestination.querySelector(`[data-template=${page}]`);
+	
+				if (!currentPage) {
+					console.log('ContentDivider: page template not found for: ' + this.contentId);
+				}
+				else {
+					templates[page] = currentPage.cloneNode(true);
+	
+					currentPage.remove();
+				}
+			});
+		}
 
 		return templates;
 	}
