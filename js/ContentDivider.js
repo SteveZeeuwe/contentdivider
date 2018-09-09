@@ -12,19 +12,16 @@ class ContentDivider{
 		this.contentEl = this.getContentEl(contentId);
 		this.contentItems = this.getContentItems();
 		this.contentDestination = this.getContentDestination();
+		this.templates = this.getTemplates();
 		this.pages = [];
-		this.templates = {};
 
 		if(!this.checkPrerequisites()){
+			console.log('ContentDivider: could not continue processing: ' + contentId);
+
 			return;
 		}
 
-		if (this.initTemplates()) {
-			this.render();
-		}
-		else {
-			console.log('ContentDivider: could not continue processing: ' + contentId);
-		}	
+		this.render();
 	}
 
 	/**
@@ -80,26 +77,25 @@ class ContentDivider{
 	 * 
 	 * @returns {Boolean}
 	 */
-	initTemplates() {
+	getTemplates() {
 
 		const pages = ['page', 'firstPage'];
+		const templates = {};
 
 		pages.forEach((page) => {
 			let currentPage = this.contentDestination.querySelector(`[data-template=${page}]`);
 
 			if (!currentPage) {
 				console.log('ContentDivider: page template not found for: ' + this.contentId);
-
-				return false;
 			}
 			else {
-				this.templates[page] = currentPage.cloneNode(true);
+				templates[page] = currentPage.cloneNode(true);
 
 				currentPage.remove();
 			}
 		});
 
-		return true;
+		return templates;
 	}
 
 	/**
