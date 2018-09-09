@@ -26,21 +26,21 @@ class ContentDivider{
 	 * @returns {Boolean}
 	 */
 	init() {
-		this.contentFrom = document.querySelector('#' + this.contentId);
+		const contentFrom = document.querySelector('#' + this.contentId);
 
-		if (!this.contentFrom || !this.contentFrom.children.length) {
+		if (!contentFrom || !contentFrom.children.length) {
 			console.log('ContentDivider: content not found: ' + this.contentId);
 
 			return false;
 		}
 
-		this.content = Array.from(this.contentFrom.children);
+		this.content = Array.from(contentFrom.children);
 
-		this.contentTo = document.querySelector('#' + this.contentFrom.dataset.to);
+		this.contentTo = document.querySelector('#' + contentFrom.dataset.to);
 
 		if (!this.contentTo) {
 
-			console.log('ContentDivider: contentTo not found: ' + this.contentFrom.dataset.to);
+			console.log('ContentDivider: contentTo not found: ' + contentFrom.dataset.to);
 
 			return false;
 		}
