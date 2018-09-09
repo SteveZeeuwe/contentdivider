@@ -4,15 +4,21 @@
  * Simple explanation
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
- * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
  * @version 1.0.0
  */
 
 class ContentDivider{
 	constructor(contentId){
-		this.contentId = contentId;
+		this.contentEl = this.setContentEl(contentId);
+		this.contentItems = this.setContentItems();
+		this.contentDestination = this.setContentDestination();
+		this.pages = [];
 
-		if (this.init() && this.initTemplates()) {
+		if(!this.checkPrerequisites()){
+			return;
+		}
+
+		if (this.initTemplates()) {
 			this.render();
 		}
 		else {
@@ -20,34 +26,30 @@ class ContentDivider{
 		}	
 	}
 
-	/**
-	 * Check for content and children.
-	 * 
-	 * @returns {Boolean}
-	 */
-	init() {
-		const contentFrom = document.querySelector('#' + this.contentId);
+	setContentEl(contentId) {
+		return document.querySelector('#' + contentId);
+	}
 
-		if (!contentFrom || !contentFrom.children.length) {
-			console.log('ContentDivider: content not found: ' + this.contentId);
-
-			return false;
+	setContentItems() {
+		if(this.contentEl){
+			return Array.from(this.contentEl.children);
 		}
 
-		this.content = Array.from(contentFrom.children);
+		return [];
+	}
 
-		this.contentTo = document.querySelector('#' + contentFrom.dataset.to);
+	setContentDestination() {
+		if(this.contentEl){
+			return document.querySelector('#' + this.contentEl.dataset.to);
+		}
+	}
 
-		if (!this.contentTo) {
-
-			console.log('ContentDivider: contentTo not found: ' + contentFrom.dataset.to);
-
-			return false;
+	checkPrerequisites() {
+		if(this.contentEl && this.contentItems.length > 0 && this.contentDestination ){
+			return true;
 		}
 
-		this.pages = [];
-
-		return true;
+		return false;
 	}
 
 	/**
@@ -58,7 +60,7 @@ class ContentDivider{
 	initTemplates() {
 		this.templates = {};
 
-		let page = this.contentTo.querySelector('[data-template=page]');
+		let page = this.contentDestination.querySelector('[data-template=page]');
 
 		if (!page) {
 			console.log('ContentDivider: page template not found for: ' + this.contentId);
@@ -71,7 +73,7 @@ class ContentDivider{
 			page.remove();
 		}
 
-		let firstPage = this.contentTo.querySelector('[data-template=firstPage]');		
+		let firstPage = this.contentDestination.querySelector('[data-template=firstPage]');		
 
 		if (!firstPage) {
 			this.templates.firstPage = page.cloneNode(true);
@@ -95,7 +97,7 @@ class ContentDivider{
 	render() {
 		let renderer = null;
 
-		this.content.forEach((contentItem, index) => {
+		this.contentItems.forEach((contentItem, index) => {
 			if(contentItem.nodeName === 'P') {
 				renderer = new RenderParagraph(this, contentItem);
 			}

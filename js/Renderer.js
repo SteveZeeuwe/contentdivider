@@ -1,7 +1,7 @@
 class Renderer {
 	constructor(contentDivider) {
 		this.pages = contentDivider.pages;
-		this.contentTo = contentDivider.contentTo;
+		this.contentDestination = contentDivider.contentDestination;
 		this.templates = contentDivider.templates;
 
 		if (!this.pages.length) {
@@ -23,7 +23,7 @@ class Renderer {
 
 		this.pages.push(page);
 
-		this.contentTo.appendChild(page);
+		this.contentDestination.appendChild(page);
 	}
 
 	removeOverflowLastPage() {
