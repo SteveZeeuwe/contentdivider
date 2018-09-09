@@ -112,7 +112,7 @@ class ContentDivider{
 	}
 
 	/**
-	 * Check for prerequisites.
+	 * Render all content items by using the relevant render object.
 	 *
 	 * @returns {void}
 	 */
