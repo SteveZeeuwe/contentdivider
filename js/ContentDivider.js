@@ -82,31 +82,22 @@ class ContentDivider{
 	 */
 	initTemplates() {
 
-		let page = this.contentDestination.querySelector('[data-template=page]');
+		const pages = ['page', 'firstPage'];
 
-		if (!page) {
-			console.log('ContentDivider: page template not found for: ' + this.contentId);
+		pages.forEach((page) => {
+			let currentPage = this.contentDestination.querySelector(`[data-template=${page}]`);
 
-			return false;
-		}
-		else {
-			this.templates.page = page.cloneNode(true);
+			if (!currentPage) {
+				console.log('ContentDivider: page template not found for: ' + this.contentId);
 
-			page.remove();
-		}
+				return false;
+			}
+			else {
+				this.templates[page] = currentPage.cloneNode(true);
 
-		let firstPage = this.contentDestination.querySelector('[data-template=firstPage]');		
-
-		if (!firstPage) {
-			this.templates.firstPage = page.cloneNode(true);
-
-			console.log('ContentDivider: firstPage not found using page template for: ' + this.contentId);
-		}
-		else {
-			this.templates.firstPage = firstPage.cloneNode(true);
-
-			firstPage.remove();
-		}
+				currentPage.remove();
+			}
+		});
 
 		return true;
 	}
