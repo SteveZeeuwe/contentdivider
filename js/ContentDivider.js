@@ -12,7 +12,7 @@ class ContentDivider{
 	constructor(contentId){
 		this.contentId = contentId;
 
-		if (this.init(contentId) && this.initTemplates()) {
+		if (this.init() && this.initTemplates()) {
 			this.render();
 		}
 		else {
