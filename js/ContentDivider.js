@@ -9,9 +9,9 @@
 
 class ContentDivider{
 	constructor(contentId){
-		this.contentEl = this.setContentEl(contentId);
-		this.contentItems = this.setContentItems();
-		this.contentDestination = this.setContentDestination();
+		this.contentEl = this.getContentEl(contentId);
+		this.contentItems = this.getContentItems();
+		this.contentDestination = this.getContentDestination();
 		this.pages = [];
 
 		if(!this.checkPrerequisites()){
@@ -26,11 +26,22 @@ class ContentDivider{
 		}	
 	}
 
-	setContentEl(contentId) {
+	/**
+	 * Retrieve the contentElement.
+	 * 
+	 * @param {String} contentId 
+	 * @returns {Element|null}
+	 */
+	getContentEl(contentId) {
 		return document.querySelector('#' + contentId);
 	}
 
-	setContentItems() {
+	/**
+	 * Retrieve all content items.
+	 * 
+	 * @returns {Array}
+	 */
+	getContentItems() {
 		if(this.contentEl){
 			return Array.from(this.contentEl.children);
 		}
@@ -38,12 +49,24 @@ class ContentDivider{
 		return [];
 	}
 
-	setContentDestination() {
+	/**
+	 * Retrieve the container element where 
+	 * we will render the content into.
+	 * 
+	 * @returns {Element|null}
+	 */
+	getContentDestination() {
 		if(this.contentEl){
 			return document.querySelector('#' + this.contentEl.dataset.to);
 		}
+
+		return null;
 	}
 
+
+	/**
+	 * Check whether we should continue or not.
+	 */
 	checkPrerequisites() {
 		if(this.contentEl && this.contentItems.length > 0 && this.contentDestination ){
 			return true;
