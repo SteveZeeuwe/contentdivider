@@ -73,7 +73,7 @@ class ContentDivider{
 	}
 
 	/**
-	 * Check for templates.
+	 * Store the template elements.
 	 * 
 	 * @returns {Boolean}
 	 */
