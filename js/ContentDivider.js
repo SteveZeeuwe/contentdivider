@@ -1,3 +1,13 @@
+/**
+ * @file ContentDivider.js
+ *
+ * Simple explanation
+ *
+ * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ * @version 1.0.0
+ */
+
 class ContentDivider{
 	constructor(contentId){
 		this.contentId = contentId;
@@ -10,6 +20,11 @@ class ContentDivider{
 		}	
 	}
 
+	/**
+	 * Check for content and children.
+	 * 
+	 * @returns {Boolean}
+	 */
 	init() {
 		this.contentFrom = document.querySelector('#' + this.contentId);
 
@@ -35,6 +50,11 @@ class ContentDivider{
 		return true;
 	}
 
+	/**
+	 * Check for templates.
+	 * 
+	 * @returns {Boolean}
+	 */
 	initTemplates() {
 		this.templates = {};
 
@@ -67,6 +87,11 @@ class ContentDivider{
 		return true;
 	}
 
+	/**
+	 * Check for prerequisites.
+	 *
+	 * @returns {void}
+	 */
 	render() {
 		let renderer = null;
 
@@ -88,5 +113,7 @@ class ContentDivider{
 				renderer.render();
 			}
 		});
+
+		return;
 	}
 }
