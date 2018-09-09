@@ -63,6 +63,8 @@ class ContentDivider{
 
 	/**
 	 * Check whether we should continue or not.
+	 * 
+	 * @returns {Boolean}
 	 */
 	checkPrerequisites() {
 		if(this.contentEl && this.contentItems.length > 0 && this.contentDestination ){
@@ -75,7 +77,7 @@ class ContentDivider{
 	/**
 	 * Store the template elements.
 	 * 
-	 * @returns {Boolean}
+	 * @returns {Object}
 	 */
 	getTemplates() {
 		const pages = ['page', 'firstPage'];
