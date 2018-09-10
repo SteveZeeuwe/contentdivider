@@ -1,7 +1,8 @@
 /**
  * @file ContentDivider.js
  *
- * Render content items onto templates.
+ * Gather content, content destination and page templates.
+ * Create relevant renderer to render content onto page templates.
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
  * @version 1.0.0
