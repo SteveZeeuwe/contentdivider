@@ -83,7 +83,7 @@ class ContentDivider{
 		const pages = ['page', 'firstPage'];
 		const templates = {};
 
-		if(contentDestination){
+		if(this.contentDestination){
 			pages.forEach((page) => {
 				let currentPage = this.contentDestination.querySelector(`[data-template=${page}]`);
 	
