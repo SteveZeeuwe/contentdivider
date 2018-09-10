@@ -107,20 +107,21 @@ class ContentDivider{
 	 * @returns {void}
 	 */
 	render() {
-		let renderer = null;
-
 		this.contentItems.forEach((contentItem, index) => {
-			if(contentItem.nodeName === 'P') {
-				renderer = new RenderParagraph(this, contentItem);
-			}
-			else if (contentItem.nodeName === 'UL') {
-				renderer = new RenderList(this, contentItem);
-			}
-			else if(contentItem.nodeName === 'TABLE') {
-				renderer = new RenderTable(this, contentItem);
-			}
-			else {
-				renderer = new RenderSimple(this, contentItem);
+			let renderer = null;
+
+			switch(contentItem.nodeName) {
+				case 'P':
+					renderer = new RenderParagraph(this, contentItem);
+					break;
+				case 'UL':
+					renderer = new RenderList(this, contentItem);
+					break;
+				case 'TABLE':
+					renderer = new RenderTable(this, contentItem);
+					break;
+				default:
+					renderer = new RenderSimple(this, contentItem);
 			}
 
 			if (renderer) {
