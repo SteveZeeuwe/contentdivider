@@ -3,33 +3,43 @@
 
 <head>
     <title>Divider</title>
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700" rel="stylesheet">
     <style type="text/css">
+        body{
+            background: #CCC;
+            font-family: 'Maven Pro', sans-serif;
+        }
+        
         .page,
         .firstPage {
-            display: inline-block;
-            width: 200mm;
-            height: 100mm;
-            background-color: #eeeeee;
-            margin: 10px;
-            padding: 10px;
-
+            width: 210mm;
+            height: 296.8mm;
+            margin: 0.5cm auto;
+            padding: 1.5cm;
+            background-color: white;
             overflow: auto;
         }
 
-        .page:first-of-type {
-            background-color: red;
+        .firstPage {
+            background-color: black;
+            color: white;
         }
 
-        .firstPage {
-            background-color: red;
+        h1{
+            margin-top: 0;
         }
 
         .contentDivider {
             display: none;
         }
 
+        table{
+            width: 100%;
+            text-align: left;
+        }
+
         tfoot {
-            color: red;
+            color: green;
         }
     </style>
 
@@ -50,7 +60,7 @@
         </div>
 
         <div class="page" data-template="page">
-            <h2>Pagina vervolg</h2>
+            <h2>Sick title</h2>
             <div class="content"></div>
             <b>Paginanummer</b>
         </div>
@@ -78,6 +88,38 @@
             cursus. Mauris auctor diam orci, quis laoreet ante imperdiet vitae. Duis consequat et mi ac mollis. Etiam id
             quam sit amet magna consectetur mollis ut et eros. Suspendisse nec ligula ut lectus pellentesque vehicula.
         </p>
+
+        <ul>
+                <li>Nance</li>
+                <li>Olive</li>
+                <li>Orange</li>
+                <li>Blood orange</li>
+                <li>Clementine</li>
+                <li>Mandarine</li>
+                <li>Tangerine</li>
+                <li>Papaya</li>
+                <li>Passionfruit</li>
+                <li>Peach</li>
+                <li>Pear</li>
+                <li>Persimmon</li>
+                <li>Plantain</li>
+                <li>Plum</li>
+                <li>Prune</li>
+                <li>Pineapple</li>
+                <li>Pineberry</li>
+                <li>Plumcot</li>
+                <li>Pomegranate</li>
+                <li>Pomelo</li>
+                <li>Purple mangosteen</li>
+                <li>Quince</li>
+                <li>Raspberry</li>
+                <li>Salmonberry</li>
+                <li>Rambutan</li>
+                <li>Redcurrant</li>
+                <li>Salal berry</li>
+                <li>Salak</li>
+                <li>Satsuma</li>
+        </ul>
 
         <p>
             Ut imperdiet turpis sed tempor fringilla. Donec lorem urna, accumsan quis lectus ac, molestie ornare enim. Mauris non pharetra
@@ -110,6 +152,31 @@
             fringilla risus. Nulla dignissim justo in nisi iaculis, et pellentesque lorem tempus. Curabitur tincidunt lectus
             in malesuada commodo. Sed ut congue dui.
         </p>
+        <ul>
+                <li>Jujube</li>
+                <li>Juniper</li>
+                <li>Kiwano</li>
+                <li>Kiwifruit</li>
+                <li>Kumquat</li>
+                <li>Lemon</li>
+                <li>Lime</li>
+                <li>Loquat</li>
+                <li>Longan</li>
+                <li>Lychee</li>
+                <li>Mango</li>
+                <li>Mangosteen</li>
+                <li>Marionberry</li>
+                <li>Melon</li>
+                <li>Cantaloupe</li>
+                <li>Honeydew</li>
+                <li>Watermelon</li>
+                <li>Miracle fruit</li>
+                <li>Mulberry</li>
+                <li>Nectarine</li>
+                <li>Soursop</li>
+                <li>Star apple</li>
+                <li>Star fruit</li>
+        </ul>
         <p>
             Fusce mollis elit quis purus sollicitudin, id dapibus urna pretium. Aenean fermentum dui est, at malesuada orci elementum
             tincidunt. Quisque eget suscipit diam. Aenean eros tortor, eleifend ut mauris a, auctor consequat purus. Quisque
@@ -139,373 +206,109 @@
         <table class="onzetabel">
             <thead>
                 <tr>
-                    <th>Test</th>
-                    <th>Fred</th>
-                    <th>Piet</th>
+                    <th>Property</th>
+                    <th>August 20</th>
+                    <th>August 27</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
+                    <td># CSS requests</td>
+                    <td>6</td>
+                    <td>7</td>
                 </tr>
                 <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
+                    <td># JS requests</td>
+                    <td>43</td>
+                    <td>46</td>
                 </tr>
                 <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
+                    <td>CSS in kb</td>
+                    <td>86</td>
+                    <td>91</td>
                 </tr>
                 <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
+                    <td>JS in kb</td>
+                    <td>6</td>
+                    <td>7</td>
                 </tr>
                 <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
+                    <td>Largest img</td>
+                    <td>535</td>
+                    <td>364</td>
                 </tr>
                 <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
+                    <td>Time to first byte</td>
+                    <td>86</td>
+                    <td>91</td>
                 </tr>
             </tbody>
-
-            <tfoot>
-                <tr>
-                    <td>Testfoot</td>
-                    <td>Fred</td>
-                    <td>Piet</td>
-                </tr>
-            </tfoot>
         </table>
 
-        <ul class="listRed">
-            <li>1 Geen emmet!</li>
-            <li>2 Geen emmet!</li>
-            <li>3 Geen emmet!</li>
-            <li>4 Geen emmet!</li>
-            <li>5 Geen emmet!</li>
-            <li>6 Geen emmet!</li>
-            <li>7 Geen emmet!</li>
-            <li>8 Geen emmet!</li>
-            <li>9 Geen emmet!</li>
-            <li>10 Geen emmet!</li>
-            <li>11 Geen emmet!</li>
-            <li>12 Geen emmet!</li>
-            <li>13 Geen emmet!</li>
-            <li>14 Geen emmet!</li>
-            <li>15 Geen emmet!</li>
-            <li>16 Geen emmet!</li>
-            <li>17 Geen emmet!</li>
-            <li>18 Geen emmet!</li>
-            <li>19 Geen emmet!</li>
-            <li>20 Geen emmet!</li>
-            <li>21 Geen emmet!</li>
-            <li>22 Geen emmet!</li>
-            <li>23 Geen emmet!</li>
-            <li>24 Geen emmet!</li>
-            <li>25 Geen emmet!</li>
-            <li>26 Geen emmet!</li>
-            <li>27 Geen emmet!</li>
-            <li>28 Geen emmet!</li>
-            <li>29 Geen emmet!</li>
-            <li>30 Geen emmet!</li>
-            <li>31 Geen emmet!</li>
-            <li>32 Geen emmet!</li>
-            <li>33 Geen emmet!</li>
-            <li>34 Geen emmet!</li>
-            <li>35 Geen emmet!</li>
-            <li>36 Geen emmet!</li>
-            <li>37 Geen emmet!</li>
-            <li>38 Geen emmet!</li>
-            <li>39 Geen emmet!</li>
-            <li>40 Geen emmet!</li>
-            <li>41 Geen emmet!</li>
-            <li>42 Geen emmet!</li>
-            <li>43 Geen emmet!</li>
-            <li>44 Geen emmet!</li>
-            <li>45 Geen emmet!</li>
-            <li>46 Geen emmet!</li>
-            <li>47 Geen emmet!</li>
-            <li>48 Geen emmet!</li>
+        <p>Are you ready to see the most complete list of fruit there is?</p>
+
+        <ul>
+            <li>Açaí</li>
+            <li>Apple</li>
+            <li>Akee</li>
+            <li>Apricot</li>
+            <li>Avocado</li>
+            <li>Banana</li>
+            <li>Bilberry</li>
+            <li>Blackberry</li>
+            <li>Blackcurrant</li>
+            <li>Black sapote</li>
+            <li>Blueberry</li>
+            <li>Boysenberry</li>
+            <li>Crab apples</li>
+            <li>Currant</li>
+            <li>Cherry</li>
+            <li>Cherimoya</li>
+            <li>Chico fruit</li>
+            <li>Cloudberry</li>
+            <li>Coconut</li>
+            <li>Cranberry</li>
+            <li>Cucumber</li>
+            <li>Damson</li>
+            <li>Date</li>
+            <li>Dragonfruit</li>
+            <li>Durian</li>
+            <li>Elderberry</li>
+            <li>Feijoa</li>
+            <li>Fig</li>
+            <li>Goji berry</li>
+            <li>Gooseberry</li>
+            <li>Grape</li>
+            <li>Raisin</li>
+            <li>Grapefruit</li>
+            <li>Guava</li>
+            <li>Honeyberry</li>
+            <li>Huckleberry</li>
+            <li>Jabuticaba</li>
+            <li>Jackfruit</li>
+            <li>Jambul</li>
+            <li>Japanese</li>
+            <li>Jostaberry</li>
+            <li>Strawberry</li>
+            <li>Surinam</li>
+            <li>Tamarillo</li>
+            <li>Tamarind</li>
+            <li>Ugli fruit</li>
+            <li>Yuzu</li>
+            <li>White currant</li>
+            <li>White Sapote</li>
+            <li>Avocado</li>
+            <li>Chili pepper</li>
+            <li>Corn kernel</li>
+            <li>Cucumber</li>
+            <li>Eggplant</li>
+            <li>Olive</li>
+            <li>Pea</li>
+            <li>Pumpkin</li>
+            <li>Squash</li>
+            <li>Tomato</li>
+            <li>Zucchini</li>
         </ul>
 
         <p>
@@ -515,26 +318,6 @@
             metus tristique faucibus eu sollicitudin magna. Duis maximus sem ante, vitae elementum sapien vehicula et. Sed
             suscipit varius purus, et gravida mi rhoncus et.
         </p>
-
-        <ul class="listBlue">
-            <li>1 Geen emmet!</li>
-            <li>2 Geen emmet!</li>
-            <li>3 Geen emmet!</li>
-            <li>4 Geen emmet!</li>
-            <li>5 Geen emmet!</li>
-            <li>6 Geen emmet!</li>
-            <li>7 Geen emmet!</li>
-            <li>8 Geen emmet!</li>
-            <li>9 Geen emmet!</li>
-            <li>10 Geen emmet!</li>
-            <li>11 Geen emmet!</li>
-            <li>12 Geen emmet!</li>
-            <li>13 Geen emmet!</li>
-            <li>14 Geen emmet!</li>
-            <li>15 Geen emmet!</li>
-            <li>16 Geen emmet!</li>
-            <li>17 Geen emmet!</li>
-        </ul>
     </div>
 
     <script type="text/javascript">
