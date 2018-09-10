@@ -108,21 +108,27 @@ class ContentDivider{
 			return;
 		}
 
+		const renderProperties = {
+			contentDestination: this.contentDestination,
+			templates: this.templates,
+			pages: this.pages,
+		}
+
 		this.contentItems.forEach((contentItem, index) => {
 			let renderer = null;
 
 			switch(contentItem.nodeName) {
 				case 'P':
-					renderer = new RenderParagraph(this, contentItem);
+					renderer = new RenderParagraph(renderProperties, contentItem);
 					break;
 				case 'UL':
-					renderer = new RenderList(this, contentItem);
+					renderer = new RenderList(renderProperties, contentItem);
 					break;
 				case 'TABLE':
-					renderer = new RenderTable(this, contentItem);
+					renderer = new RenderTable(renderProperties, contentItem);
 					break;
 				default:
-					renderer = new RenderSimple(this, contentItem);
+					renderer = new RenderSimple(renderProperties, contentItem);
 			}
 
 			renderer.render();

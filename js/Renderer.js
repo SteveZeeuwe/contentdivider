@@ -1,8 +1,8 @@
 class Renderer {
-	constructor(contentDivider) {
-		this.pages = contentDivider.pages;
-		this.contentDestination = contentDivider.contentDestination;
-		this.templates = contentDivider.templates;
+	constructor(renderProperties) {
+		this.contentDestination = renderProperties.contentDestination;
+		this.templates = renderProperties.templates;
+		this.pages = renderProperties.pages;
 
 		if (!this.pages.length) {
 			this.createNewPage();
