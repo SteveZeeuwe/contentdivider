@@ -87,14 +87,14 @@ class ContentDivider{
 			pages.forEach((page) => {
 				let currentPage = this.contentDestination.querySelector(`[data-template=${page}]`);
 	
-				if (!currentPage) {
-					console.log('ContentDivider: page template not found for: ' + this.contentId);
-				}
-				else {
+				if(currentPage) {
 					templates[page] = currentPage.cloneNode(true);
 	
 					currentPage.remove();
+					return;
 				}
+
+				console.log('ContentDivider: page template not found for: ' + this.contentId);
 			});
 		}
 
