@@ -26,7 +26,6 @@ class Renderer {
 	 * @returns {void}
 	 */
 	createNewPage() {
-		this.removeOverflowLastPage();
 
 		let page;
 
@@ -34,6 +33,7 @@ class Renderer {
 			page = this.templates.firstPage.cloneNode(true);
 		}
 		else {
+			this.removeOverflowLastPage();
 			page = this.templates.page.cloneNode(true);
 		}
 
@@ -51,9 +51,7 @@ class Renderer {
 	 * @returns {void}
 	 */
 	removeOverflowLastPage() {
-		if (this.pages.length) {
-			this.pages[this.pages.length-1].setAttribute('style', 'overflow: hidden;');
-		}
+		this.pages[this.pages.length-1].setAttribute('style', 'overflow: hidden;');
 	}
 
 	/**
