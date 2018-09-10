@@ -124,9 +124,7 @@ class ContentDivider{
 					renderer = new RenderSimple(this, contentItem);
 			}
 
-			if (renderer) {
-				renderer.render();
-			}
+			renderer.render();
 		});
 
 		return;
