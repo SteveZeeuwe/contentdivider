@@ -76,6 +76,8 @@ class ContentDivider{
 
 	/**
 	 * Store the template elements.
+	 * TODO: Figure out whether it is better to nest 
+	 * 		 the if statement or to have two returns.
 	 * 
 	 * @returns {Object}
 	 */
@@ -103,6 +105,7 @@ class ContentDivider{
 
 	/**
 	 * Render all content items by using the relevant render object.
+	 * TODO: figure out whether it is better to re-use the renderers.
 	 *
 	 * @returns {void}
 	 */
