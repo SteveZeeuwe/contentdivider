@@ -27,7 +27,7 @@ class ContentDivider{
 	/**
 	 * Retrieve the contentElement.
 	 * 
-	 * @param {String} contentId 
+	 * @param {string} contentId 
 	 * @returns {Element|null}
 	 */
 	getContentEl(contentId) {
@@ -64,7 +64,7 @@ class ContentDivider{
 	/**
 	 * Check whether we should continue or not.
 	 * 
-	 * @returns {Boolean}
+	 * @returns {boolean}
 	 */
 	checkPrerequisites() {
 		if(this.contentEl && this.contentItems.length > 0 && this.contentDestination ){
