@@ -14,14 +14,6 @@ class ContentDivider{
 		this.contentDestination = this.getContentDestination();
 		this.templates = this.getTemplates();
 		this.pages = [];
-
-		if(!this.checkPrerequisites()){
-			console.log('ContentDivider: could not continue processing: ' + contentId);
-
-			return;
-		}
-
-		this.render();
 	}
 
 	/**
@@ -110,6 +102,12 @@ class ContentDivider{
 	 * @returns {void}
 	 */
 	render() {
+		if(!this.checkPrerequisites()){
+			console.log('ContentDivider: could not start rendering: ' + contentId);
+
+			return;
+		}
+
 		this.contentItems.forEach((contentItem, index) => {
 			let renderer = null;
 
