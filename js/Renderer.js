@@ -18,6 +18,13 @@ class Renderer {
 		}
 	}
 
+	/**
+	 * Remove the overflow from the last page as this doesn't happen automagically,
+	 * add a clone of the relevant page template to the pages for state tracking
+	 * and append the new page to the destination so I can render items to it later.
+	 * 
+	 * @returns {void}
+	 */
 	createNewPage() {
 		this.removeOverflowLastPage();
 
@@ -35,12 +42,26 @@ class Renderer {
 		this.contentDestination.appendChild(page);
 	}
 
+	/**
+	 * When the current page overflows I immediately remove the last added element
+	 * to stop the overflowing. Sadly the browser is not smart enough to check if 
+	 * removing the scrollbar would result in potentially not needing the scrollbar 
+	 * anymore. For this edgecase I have to explicitly set the overflow to hidden.* 
+	 * 
+	 * @returns {void}
+	 */
 	removeOverflowLastPage() {
 		if (this.pages.length) {
 			this.pages[this.pages.length-1].setAttribute('style', 'overflow: hidden;');
 		}
 	}
 
+	/**
+	 * Append the given element to the latest page.
+	 * 
+	 * @param {Element} item 
+	 * @returns {void}
+	 */
 	addItemToLastPage(item) {
 		this.pages[this.pages.length-1].querySelector('.content').appendChild(item);
 	}
