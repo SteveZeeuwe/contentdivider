@@ -12,10 +12,6 @@ class Renderer {
 		this.contentDestination = renderProperties.contentDestination;
 		this.templates = renderProperties.templates;
 		this.pages = renderProperties.pages;
-
-		if (!this.pages.length) {
-			this.createNewPage();
-		}
 	}
 
 	/**
@@ -26,20 +22,19 @@ class Renderer {
 	 * @returns {void}
 	 */
 	createNewPage() {
-
-		let page;
-
-		if (!this.pages.length) {
-			page = this.templates.firstPage.cloneNode(true);
-		}
-		else {
-			this.removeOverflowLastPage();
-			page = this.templates.page.cloneNode(true);
-		}
+		this.removeOverflowLastPage();
+		const page = this.templates.page.cloneNode(true);
 
 		this.pages.push(page);
 
 		this.contentDestination.appendChild(page);
+	}
+
+	static createFirstpage(renderProperties){
+		const page = renderProperties.templates.firstPage.cloneNode(true);
+
+		renderProperties.pages.push(page);
+		renderProperties.contentDestination.appendChild(page);
 	}
 
 	/**
