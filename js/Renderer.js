@@ -22,11 +22,9 @@ class Renderer {
 	 * @returns {void}
 	 */
 	createNewPage() {
-		this.removeOverflowLastPage();
 		const page = this.templates.page.cloneNode(true);
-
+		this.removeOverflowLastPage();
 		this.pages.push(page);
-
 		this.contentDestination.appendChild(page);
 	}
 
@@ -36,7 +34,7 @@ class Renderer {
 	 * @param {Object} renderProperties
 	 * @returns {void}
 	 */
-	static createFirstpage(renderProperties){
+	static createFirstPage(renderProperties){
 		const page = renderProperties.templates.firstPage.cloneNode(true);
 
 		renderProperties.pages.push(page);
@@ -52,7 +50,7 @@ class Renderer {
 	 * @returns {void}
 	 */
 	removeOverflowLastPage() {
-		this.pages[this.pages.length-1].setAttribute('style', 'overflow: hidden;');
+		this.pages[this.pages.length-1].classList.add('Full');
 	}
 
 	/**

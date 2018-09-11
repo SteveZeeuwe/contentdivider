@@ -115,7 +115,7 @@ class ContentDivider{
 			pages: this.pages,
 		}
 
-		Renderer.createFirstpage(renderProperties);
+		Renderer.createFirstPage(renderProperties);
 
 		this.contentItems.forEach((contentItem, index) => {
 			let renderer = null;
