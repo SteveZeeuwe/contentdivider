@@ -1,6 +1,6 @@
 class RenderParagraph extends Renderer {
-	constructor(contentDivider, paragraph) {
-		super(contentDivider);
+	constructor(renderProperties, paragraph) {
+		super(renderProperties);
 		
 		this.paragraph = paragraph.cloneNode();
 		this.paragraphWords = paragraph.innerHTML.split(' ');

@@ -1,6 +1,6 @@
 class RenderSimple extends Renderer {
-	constructor(contentDivider, contentItem) {
-		super(contentDivider);
+	constructor(renderProperties, contentItem) {
+		super(renderProperties);
 
 		this.contentItem = contentItem;
 	}

@@ -1,6 +1,6 @@
 class RenderTable extends Renderer {
-	constructor(contentDivider, table) {
-		super(contentDivider);
+	constructor(renderProperties, table) {
+		super(renderProperties);
 		
 		this.table = table.cloneNode();
 		this.tableHeader = null;

@@ -1,6 +1,6 @@
 class RenderList extends Renderer {
-	constructor(contentDivider, ul) {
-		super(contentDivider);
+	constructor(renderProperties, ul) {
+		super(renderProperties);
 		
 		this.list = ul.cloneNode();
 		this.listItems = Array.from(ul.children);
