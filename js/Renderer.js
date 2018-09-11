@@ -30,6 +30,12 @@ class Renderer {
 		this.contentDestination.appendChild(page);
 	}
 
+	/**
+	 * Append the first page to the destination element.
+	 * 
+	 * @param {Object} renderProperties
+	 * @returns {void}
+	 */
 	static createFirstpage(renderProperties){
 		const page = renderProperties.templates.firstPage.cloneNode(true);
 
