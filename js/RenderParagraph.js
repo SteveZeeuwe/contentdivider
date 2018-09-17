@@ -1,6 +1,6 @@
 class RenderParagraph extends Renderer {
-	constructor(contentDivider, paragraph) {
-		super(contentDivider);
+	constructor(renderProperties, paragraph) {
+		super(renderProperties);
 		
 		this.paragraph = paragraph.cloneNode();
 		this.paragraphWords = paragraph.innerHTML.split(' ');
@@ -29,7 +29,6 @@ class RenderParagraph extends Renderer {
 	}
 
 	ifAddWordToLastParagraphOverflows(word) {
-		let result = false;
 		let currentPage = this.pages[this.pages.length-1];
 		let currentParagraph = this.paragraphs[this.paragraphs.length-1];
 

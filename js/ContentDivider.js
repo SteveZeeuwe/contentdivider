@@ -1,92 +1,142 @@
+/**
+ * @file ContentDivider.js
+ *
+ * Gather content, content destination and page templates.
+ * Create relevant renderer to render content onto page templates.
+ *
+ * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @version 1.0.0
+ */
+
 class ContentDivider{
 	constructor(contentId){
-		this.contentId = contentId;
-
-		if (this.init(contentId) && this.initTemplates()) {
-			this.render();
-		}
-		else {
-			console.log('ContentDivider: could not continue processing: ' + contentId);
-		}	
-	}
-
-	init() {
-		this.contentFrom = document.querySelector('#' + this.contentId);
-
-		if (!this.contentFrom || !this.contentFrom.children.length) {
-			console.log('ContentDivider: content not found: ' + this.contentId);
-
-			return false;
-		}
-
-		this.content = Array.from(this.contentFrom.children);
-
-		this.contentTo = document.querySelector('#' + this.contentFrom.dataset.to);
-
-		if (!this.contentTo) {
-
-			console.log('ContentDivider: contentTo not found: ' + this.contentFrom.dataset.to);
-
-			return false;
-		}
-
+		this.contentEl = this.getContentEl(contentId);
+		this.contentItems = this.getContentItems();
+		this.contentDestination = this.getContentDestination();
+		this.templates = this.getTemplates();
 		this.pages = [];
-
-		return true;
 	}
 
-	initTemplates() {
-		this.templates = {};
-
-		let page = this.contentTo.querySelector('[data-template=page]');
-
-		if (!page) {
-			console.log('ContentDivider: page template not found for: ' + this.contentId);
-
-			return false;
-		}
-		else {
-			this.templates.page = page.cloneNode(true);
-
-			page.remove();
-		}
-
-		let firstPage = this.contentTo.querySelector('[data-template=firstPage]');		
-
-		if (!firstPage) {
-			this.templates.firstPage = page.cloneNode(true);
-
-			console.log('ContentDivider: firstPage not found using page template for: ' + this.contentId);
-		}
-		else {
-			this.templates.firstPage = firstPage.cloneNode(true);
-
-			firstPage.remove();
-		}
-
-		return true;
+	/**
+	 * Retrieve the contentElement.
+	 * 
+	 * @param {string} contentId 
+	 * @returns {Element|null}
+	 */
+	getContentEl(contentId) {
+		return document.querySelector('#' + contentId);
 	}
 
+	/**
+	 * Retrieve all content items.
+	 * 
+	 * @returns {Array}
+	 */
+	getContentItems() {
+		if(this.contentEl){
+			return Array.from(this.contentEl.children);
+		}
+
+		return [];
+	}
+
+	/**
+	 * Retrieve the container element where 
+	 * we will render the content into.
+	 * 
+	 * @returns {Element|null}
+	 */
+	getContentDestination() {
+		if(this.contentEl){
+			return document.querySelector('#' + this.contentEl.dataset.to);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Check whether we should continue or not.
+	 * 
+	 * @returns {boolean}
+	 */
+	checkPrerequisites() {
+		if(this.contentEl && this.contentItems.length > 0 && this.contentDestination ){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Store the template elements.
+	 * TODO: Figure out whether it is better to nest 
+	 * 		 the if statement or to have two returns.
+	 * 
+	 * @returns {Object}
+	 */
+	getTemplates() {
+		const pages = ['page', 'firstPage'];
+		const templates = {};
+
+		if(this.contentDestination){
+			pages.forEach((page) => {
+				let currentPage = this.contentDestination.querySelector(`[data-template=${page}]`);
+	
+				if(currentPage) {
+					templates[page] = currentPage.cloneNode(true);
+	
+					currentPage.remove();
+					return;
+				}
+
+				console.log('ContentDivider: page template not found for: ' + this.contentId);
+			});
+		}
+
+		return templates;
+	}
+
+	/**
+	 * Render all content items by using the relevant render object.
+	 * TODO: figure out whether it is better to re-use the renderers.
+	 *
+	 * @returns {void}
+	 */
 	render() {
-		let renderer = null;
+		if(!this.checkPrerequisites()){
+			console.log('ContentDivider: could not start rendering: ' + contentId);
 
-		this.content.forEach((contentItem, index) => {
-			if(contentItem.nodeName === 'P') {
-				renderer = new RenderParagraph(this, contentItem);
-			}
-			else if (contentItem.nodeName === 'UL') {
-				renderer = new RenderList(this, contentItem);
-			}
-			else if(contentItem.nodeName === 'TABLE') {
-				renderer = new RenderTable(this, contentItem);
-			}
-			else {
-				renderer = new RenderSimple(this, contentItem);
+			return;
+		}
+
+		const renderProperties = {
+			contentDestination: this.contentDestination,
+			templates: this.templates,
+			pages: this.pages,
+		}
+
+		Renderer.createFirstPage(renderProperties);
+
+		this.contentItems.forEach((contentItem, index) => {
+			let renderer = null;
+
+			switch(contentItem.nodeName) {
+				case 'P':
+					renderer = new RenderParagraph(renderProperties, contentItem);
+					break;
+				case 'UL':
+					renderer = new RenderList(renderProperties, contentItem);
+					break;
+				case 'TABLE':
+					renderer = new RenderTable(renderProperties, contentItem);
+					break;
+				default:
+					renderer = new RenderSimple(renderProperties, contentItem);
 			}
 
-			if (renderer) {
-				renderer.render();
-			}
+			renderer.render();
 		});
+
+		return;
 	}
 }
