@@ -18,11 +18,6 @@ class RenderSimple extends Renderer {
 
 		currentPage.appendChild(this.contentItem);
 
-		if (currentPage.scrollHeight > currentPage.clientHeight) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return currentPage.scrollHeight > currentPage.clientHeight;
 	}
 }

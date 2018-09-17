@@ -35,11 +35,7 @@ class RenderList extends Renderer {
 
 		currentList.appendChild(listItem);
 
-		if (currentPage.scrollHeight > currentPage.clientHeight) {
-			return true;
-		}
-		
-		return false;
+		return currentPage.scrollHeight > currentPage.clientHeight;
 	}
 
 	addItemToLastList(listItem) {

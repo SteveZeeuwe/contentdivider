@@ -60,11 +60,8 @@ class ContentDivider{
 	 * @returns {boolean}
 	 */
 	checkPrerequisites() {
-		if(this.contentEl && this.contentItems.length > 0 && this.contentDestination ){
-			return true;
-		}
 
-		return false;
+		return this.contentEl && this.contentItems.length > 0 && this.contentDestination;
 	}
 
 	/**
