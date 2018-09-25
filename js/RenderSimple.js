@@ -25,7 +25,7 @@ class RenderSimple extends Renderer {
 	ifAddItemToLastPageOverflows() {
 		let currentPage = this.pages[this.pages.length-1];
 
-		currentPage.appendChild(this.contentItem);
+		currentPage.querySelector('.content').appendChild(this.contentItem);
 
 		return currentPage.scrollHeight > currentPage.clientHeight;
 	}
