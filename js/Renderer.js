@@ -4,6 +4,8 @@
  * Base renderer to be extended by specific render classes.
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
  * @version 1.0.0
  */
 

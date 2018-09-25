@@ -1,3 +1,18 @@
+/**
+ * @file RenderTable.js
+ *
+ * Renders a table divided over pages
+ * Takes the following into account:
+ * - re-rendering of table head when opening new table on new page
+ * - only rendering the footer at the bottom of the last table
+ * - clones all element properties into every generated table
+ *
+ * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
+ * @version 1.0.0
+ */
+
 class RenderTable extends Renderer {
 	constructor(renderProperties, table) {
 		super(renderProperties);

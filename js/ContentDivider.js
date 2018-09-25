@@ -5,6 +5,8 @@
  * Create relevant renderer to render content onto page templates.
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
  * @version 1.0.0
  */
 

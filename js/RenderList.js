@@ -1,3 +1,14 @@
+/**
+ * @file RenderList.js
+ *
+ * Renders a list item by item
+ *
+ * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
+ * @version 1.0.0
+ */
+
 class RenderList extends Renderer {
 	constructor(renderProperties, ul) {
 		super(renderProperties);

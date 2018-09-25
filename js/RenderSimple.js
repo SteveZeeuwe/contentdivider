@@ -4,6 +4,8 @@
  * Renders simple elements straight onto the current page
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
  * @version 1.0.0
  */
 

@@ -1,3 +1,14 @@
+/**
+ * @file RenderParagraph.js
+ *
+ * Renders a paragraph word by word
+ *
+ * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
+ * @version 1.0.0
+ */
+
 class RenderParagraph extends Renderer {
 	constructor(renderProperties, paragraph) {
 		super(renderProperties);
