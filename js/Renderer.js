@@ -33,13 +33,18 @@ class Renderer {
 	 * @param {Object} renderProperties
 	 * @returns {void}
 	 */
-	static createFirstPage(renderProperties){
+	createFirstPage(renderProperties){
 		const page = renderProperties.templates.firstPage.cloneNode(true);
 
 		renderProperties.pages.push(page);
 		renderProperties.contentDestination.appendChild(page);
 	}
 
+    /**
+	 * Do an overflow check specifically for the last page
+	 *
+     * @returns {boolean}
+     */
 	lastPageContainsOverflowingNodes() {
 		return this.pageContainsOverflowingNodes(this.pages[this.pages.length-1]);
 	}
@@ -71,7 +76,7 @@ class Renderer {
     /**
 	 * Check whether a single node is overflowing
 	 * Requirement: the overflow CSS property of this node may not be 'default'
-	 * If not set, the browser automatically sets this property yo 'default'.
+	 * If not set, the browser automatically sets this property to 'default'.
 	 *
      * @param node
      * @returns {boolean}
