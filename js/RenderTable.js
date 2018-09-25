@@ -18,18 +18,19 @@ class RenderTable extends Renderer {
 		this.tableRows = Array.from(table.tBodies[0].children);
 
 		this.tables = [];
-
-		this.addTableToLastPage();
 	}
 
 	render() {
+        this.addTableToLastPage();
+
 		this.tableRows.forEach((tableRow, index) => {
-			if (this.ifAddRowToLastTableOverflows(tableRow)) {
+            this.moveRowToLastTable(tableRow);
+
+			if (this.lastPageContainsOverflowingNodes()) {
 				this.createNewPage();
 				this.addTableToLastPage();
-			}
-
-			this.addRowToLastTable(tableRow);
+				this.moveRowToLastTable(tableRow);
+            }
 		});
 
 		this.addFooterToLastTable();
@@ -38,7 +39,7 @@ class RenderTable extends Renderer {
 	addTableToLastPage() {
 		let table = this.table.cloneNode();
 
-		this.addItemToLastPage(table);
+		this.moveNodeToLastPage(table);
 
 		this.tables.push(table);
 
@@ -46,16 +47,7 @@ class RenderTable extends Renderer {
 		this.addBodyToLastTable();
 	}
 
-	ifAddRowToLastTableOverflows(tableRow) {
-		let currentPage = this.pages[this.pages.length-1];
-		let currentTable = this.tables[this.tables.length-1];
-
-		currentTable.tBodies[0].appendChild(tableRow);
-
-		return this.pageContainsOverflowingNodes(currentPage);
-	}
-
-	addRowToLastTable(tableRow) {
+	moveRowToLastTable(tableRow) {
 		this.tables[this.tables.length-1].tBodies[0].appendChild(tableRow);
 	}
 

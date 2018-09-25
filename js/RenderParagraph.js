@@ -12,7 +12,11 @@ class RenderParagraph extends Renderer {
 		this.addParagraphToLastPage();
 
 		this.paragraphWords.forEach((word, index) => {
-			if (this.ifAddWordToLastParagraphOverflows(word)) {
+			this.addWordToLastParagraph(word);
+
+			if (this.lastPageContainsOverflowingNodes()) {
+				this.removeWordFromLastParagraph();
+
 				this.createNewPage();
 				this.addParagraphToLastPage();
 				this.addWordToLastParagraph(word);
@@ -23,27 +27,17 @@ class RenderParagraph extends Renderer {
 	addParagraphToLastPage() {
 		let paragraph = this.paragraph.cloneNode();
 
-		this.addItemToLastPage(paragraph);
+		this.moveNodeToLastPage(paragraph);
 
 		this.paragraphs.push(paragraph);
 	}
 
-	ifAddWordToLastParagraphOverflows(word) {
-		let currentPage = this.pages[this.pages.length-1];
-		let currentParagraph = this.paragraphs[this.paragraphs.length-1];
-
-		currentParagraph.textContent += ' ' + word;
-
-		if (this.pageContainsOverflowingNodes(currentPage)) {
-			currentParagraph.textContent = currentParagraph.textContent.substring(0, currentParagraph.textContent.lastIndexOf(" "));
-
-			return true;
-		}
-		
-		return false;
-	}
-
 	addWordToLastParagraph(word) {
 		this.paragraphs[this.paragraphs.length-1].textContent += ' ' + word;
+	}
+
+	removeWordFromLastParagraph() {
+		let p = this.paragraphs[this.paragraphs.length-1];
+        p.textContent = p.textContent.substring(0, p.textContent.lastIndexOf(" "));
 	}
 }

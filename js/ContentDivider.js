@@ -110,7 +110,7 @@ class ContentDivider{
 			contentDestination: this.contentDestination,
 			templates: this.templates,
 			pages: this.pages,
-		}
+		};
 
 		Renderer.createFirstPage(renderProperties);
 

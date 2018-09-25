@@ -40,6 +40,17 @@ class Renderer {
 		renderProperties.contentDestination.appendChild(page);
 	}
 
+	lastPageContainsOverflowingNodes() {
+		return this.pageContainsOverflowingNodes(this.pages[this.pages.length-1]);
+	}
+
+    /**
+	 * Check whether there are overflowing content nodes on this page
+	 * Also checks the overflowing of the page itself.
+	 *
+     * @param page
+     * @returns {boolean}
+     */
 	pageContainsOverflowingNodes(page) {
         let nodes = [page];
         let overflow = false;
@@ -57,6 +68,14 @@ class Renderer {
         return overflow;
 	}
 
+    /**
+	 * Check whether a single node is overflowing
+	 * Requirement: the overflow CSS property of this node may not be 'default'
+	 * If not set, the browser automatically sets this property yo 'default'.
+	 *
+     * @param node
+     * @returns {boolean}
+     */
 	nodeOverflows(node) {
 		return node.scrollHeight > node.offsetHeight;
 	}
@@ -67,7 +86,7 @@ class Renderer {
 	 * @param {Element} item 
 	 * @returns {void}
 	 */
-	addItemToLastPage(item) {
+    moveNodeToLastPage(item) {
 		this.pages[this.pages.length-1].querySelector('.content').appendChild(item);
 	}
 }
