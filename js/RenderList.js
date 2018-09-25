@@ -9,7 +9,7 @@ class RenderList extends Renderer {
 	}
 
 	render() {
-        this.addListToLastPage();
+        this.addListToLastContentNode();
 
 		this.listItems.forEach((listItem, index) => {
             this.addContent(
@@ -17,17 +17,17 @@ class RenderList extends Renderer {
                     this.moveItemToLastList(listItem);
                 },
                 () => {
-                    this.addListToLastPage();
+                    this.addListToLastContentNode();
                     this.moveItemToLastList(listItem);
                 }
             );
 		});
 	}
 
-	addListToLastPage() {
+	addListToLastContentNode() {
 		let list = this.list.cloneNode();
 
-		this.moveNodeToLastContentDiv(list);
+		this.moveNodeToLastContentNode(list);
 
 		this.lists.push(list);
 	}

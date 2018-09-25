@@ -21,10 +21,17 @@ class Renderer {
 	 */
 	createNewPage() {
 		const page = this.renderProperties.templates.page.cloneNode(true);
-		page.contentDivs = Array.from(page.querySelectorAll('.content'));
+		page.contentNodes = Array.from(page.querySelectorAll('.content')).map(( contentNode => {
+            contentNode.active = false;
+			return contentNode;
+		}));
+
+		page.contentNodes[0].active = true;
 
         this.renderProperties.pages.push(page);
         this.renderProperties.contentDestination.appendChild(page);
+
+        console.log(this.renderProperties);
 	}
 
 	/**
@@ -35,7 +42,12 @@ class Renderer {
 	 */
     static createFirstPage(renderProperties){
 		const page = renderProperties.templates.firstPage.cloneNode(true);
-        page.contentDivs = Array.from(page.querySelectorAll('.content'));
+        page.contentNodes = Array.from(page.querySelectorAll('.content')).map(( contentNode => {
+            contentNode.active = false;
+        	return contentNode;
+		}));
+
+        page.contentNodes[0].active = true;
 
 		renderProperties.pages.push(page);
 		renderProperties.contentDestination.appendChild(page);
@@ -87,16 +99,17 @@ class Renderer {
 	}
 
     /**
-	 * Try to add content to the latest contentDiv
+	 * Try to add content to the latest contentNode
 	 *
      * @param first: the first function to call
-     * @param second: function to call when first function results in overflow, after a new contentDiv is prepared
+     * @param second: function to call when first function results in overflow, after a new contentNode is prepared
      */
 	addContent(first, second = null) {
         first();
 
 		if (this.lastPageContainsOverflowingNodes()) {
-			this.createNewPage();
+
+			this.makeNextContentNodeActiveOrCreateNewPage();
 
 			if (second !== null) {
 				this.addContent(second);
@@ -107,7 +120,52 @@ class Renderer {
 		}
 	}
 
-    moveNodeToLastContentDiv(item) {
-        this.renderProperties.pages[this.renderProperties.pages.length-1].querySelector('.content').appendChild(item);
+    /**
+	 * Move a node to the last contentNode
+	 *
+     * @param item
+     */
+    moveNodeToLastContentNode(item) {
+        this.getLastActiveContentNode().appendChild(item);
+	}
+
+    /**
+	 * Find the latest active contentNode
+	 *
+     * @returns {*}
+     */
+	getLastActiveContentNode() {
+    	let activeContentNode = null;
+
+        this.renderProperties.pages[this.renderProperties.pages.length-1].contentNodes.forEach((contentNode) => {
+			if (contentNode.active) {
+                activeContentNode =  contentNode;
+			}
+		});
+
+        return activeContentNode;
+	}
+
+	findNextInactiveContentNodeOnLastPage() {
+		let nextInactiveContentNode = null;
+
+        this.renderProperties.pages[this.renderProperties.pages.length-1].contentNodes.forEach((contentNode) => {
+            if (contentNode.active === false) {
+                nextInactiveContentNode =  contentNode;
+            }
+        });
+
+        return nextInactiveContentNode;
+	}
+
+	makeNextContentNodeActiveOrCreateNewPage() {
+		let nextContentNode = this.findNextInactiveContentNodeOnLastPage();
+
+        if (nextContentNode !== null) {
+            nextContentNode.active = true;
+        }
+        else {
+            this.createNewPage();
+		}
 	}
 }

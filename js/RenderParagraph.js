@@ -9,7 +9,7 @@ class RenderParagraph extends Renderer {
 	}
 
 	render() {
-		this.addParagraphToLastPage();
+		this.addParagraphToLastContentNode();
 
 		this.paragraphWords.forEach((word, index) => {
             this.addContent(
@@ -18,17 +18,17 @@ class RenderParagraph extends Renderer {
                 },
                 () => {
                     this.removeWordFromLastParagraph();
-                    this.addParagraphToLastPage();
+                    this.addParagraphToLastContentNode();
                     this.addWordToLastParagraph(word);
                 }
             );
 		});
 	}
 
-	addParagraphToLastPage() {
+	addParagraphToLastContentNode() {
 		let paragraph = this.paragraph.cloneNode();
 
-		this.moveNodeToLastContentDiv(paragraph);
+		this.moveNodeToLastContentNode(paragraph);
 
 		this.paragraphs.push(paragraph);
 	}

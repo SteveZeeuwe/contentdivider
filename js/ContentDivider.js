@@ -110,8 +110,7 @@ class ContentDivider{
 		const renderProperties = {
 			contentDestination: this.contentDestination,
 			templates: this.templates,
-			pages: this.pages,
-			contentDivs: this.contentDivs
+			pages: this.pages
 		};
 
 		Renderer.createFirstPage(renderProperties);

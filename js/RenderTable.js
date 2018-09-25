@@ -21,7 +21,7 @@ class RenderTable extends Renderer {
 	}
 
 	render() {
-        this.addTableToLastPage();
+        this.addTableToLastContentNode();
 
 		this.tableRows.forEach((tableRow, index) => {
 
@@ -30,7 +30,7 @@ class RenderTable extends Renderer {
                     this.moveRowToLastTable(tableRow);
                 },
                 () => {
-                    this.addTableToLastPage();
+                    this.addTableToLastContentNode();
                     this.moveRowToLastTable(tableRow);
                 }
             );
@@ -39,10 +39,10 @@ class RenderTable extends Renderer {
 		this.addFooterToLastTable();
 	}
 
-	addTableToLastPage() {
+	addTableToLastContentNode() {
 		let table = this.table.cloneNode();
 
-		this.moveNodeToLastContentDiv(table);
+		this.moveNodeToLastContentNode(table);
 
 		this.tables.push(table);
 
