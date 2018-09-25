@@ -23,7 +23,6 @@ class Renderer {
 	 */
 	createNewPage() {
 		const page = this.templates.page.cloneNode(true);
-		this.removeOverflowLastPage();
 		this.pages.push(page);
 		this.contentDestination.appendChild(page);
 	}
@@ -41,16 +40,25 @@ class Renderer {
 		renderProperties.contentDestination.appendChild(page);
 	}
 
-	/**
-	 * When the current page overflows I immediately remove the last added element
-	 * to stop the overflowing. Sadly the browser is not smart enough to check if 
-	 * removing the scrollbar would result in potentially not needing the scrollbar 
-	 * anymore. For this edgecase I have to explicitly set the overflow to hidden.* 
-	 * 
-	 * @returns {void}
-	 */
-	removeOverflowLastPage() {
-		this.pages[this.pages.length-1].classList.add('Full');
+	pageContainsOverflowingNodes(page) {
+        let nodes = [page];
+        let overflow = false;
+
+        page.querySelectorAll('.content').forEach((node) => {
+        	nodes.push(node);
+		});
+
+        nodes.forEach((node) => {
+            if (this.nodeOverflows(node)) {
+                overflow = true;
+            }
+        });
+
+        return overflow;
+	}
+
+	nodeOverflows(node) {
+		return node.scrollHeight > node.offsetHeight;
 	}
 
 	/**

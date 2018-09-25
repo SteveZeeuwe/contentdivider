@@ -34,7 +34,7 @@ class RenderParagraph extends Renderer {
 
 		currentParagraph.textContent += ' ' + word;
 
-		if (currentPage.scrollHeight > currentPage.clientHeight) {
+		if (this.pageContainsOverflowingNodes(currentPage)) {
 			currentParagraph.textContent = currentParagraph.textContent.substring(0, currentParagraph.textContent.lastIndexOf(" "));
 
 			return true;

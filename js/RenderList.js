@@ -35,7 +35,7 @@ class RenderList extends Renderer {
 
 		currentList.appendChild(listItem);
 
-		return currentPage.scrollHeight > currentPage.clientHeight;
+		return this.pageContainsOverflowingNodes(currentPage);
 	}
 
 	addItemToLastList(listItem) {

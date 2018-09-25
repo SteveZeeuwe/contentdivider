@@ -27,6 +27,6 @@ class RenderSimple extends Renderer {
 
 		currentPage.querySelector('.content').appendChild(this.contentItem);
 
-		return currentPage.scrollHeight > currentPage.clientHeight;
+		return this.pageContainsOverflowingNodes(currentPage);
 	}
 }

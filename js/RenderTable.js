@@ -52,7 +52,7 @@ class RenderTable extends Renderer {
 
 		currentTable.tBodies[0].appendChild(tableRow);
 
-		return currentPage.scrollHeight > currentPage.clientHeight;
+		return this.pageContainsOverflowingNodes(currentPage);
 	}
 
 	addRowToLastTable(tableRow) {
