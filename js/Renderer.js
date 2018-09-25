@@ -112,7 +112,7 @@ class Renderer {
 				this.addContent(second);
             }
             else {
-                this.addContent(first);
+                this.addContent(first, () => {});
 			}
 		}
 	}
