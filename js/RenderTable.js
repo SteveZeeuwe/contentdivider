@@ -38,13 +38,14 @@ class RenderTable extends Renderer {
 	render() {
         this.addTableToLastContentNode();
 
-		this.tableRows.forEach((tableRow, index) => {
+		this.tableRows.forEach((tableRow) => {
 
             this.addContent(
                 () => {
                     this.moveRowToLastTable(tableRow);
                 },
                 () => {
+                	console.log('move table');
                     this.addTableToLastContentNode();
                     this.moveRowToLastTable(tableRow);
                 }

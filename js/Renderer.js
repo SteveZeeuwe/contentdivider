@@ -109,7 +109,7 @@ class Renderer {
 			this.makeNextContentNodeActiveOrCreateNewPage();
 
 			if (second !== null) {
-				this.addContent(second);
+				this.addContent(second, () => {});
             }
             else {
                 this.addContent(first, () => {});
