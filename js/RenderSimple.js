@@ -15,11 +15,10 @@ class RenderSimple extends Renderer {
 	}
 
 	render() {
-        this.moveNodeToLastPage(this.contentItem);
-
-		if (this.lastPageContainsOverflowingNodes()) {
-			this.createNewPage();
-            this.moveNodeToLastPage(this.contentItem);
-		}
+        this.addContent(
+			() => {
+				this.moveNodeToLastContentDiv(this.contentItem);
+			}
+		);
 	}
 }

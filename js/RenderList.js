@@ -6,26 +6,28 @@ class RenderList extends Renderer {
 		this.listItems = Array.from(ul.children);
 
 		this.lists = [];
-
-		this.addListToLastPage();
 	}
 
 	render() {
-		this.listItems.forEach((listItem, index) => {
-			this.moveItemToLastList(listItem);
+        this.addListToLastPage();
 
-			if (this.lastPageContainsOverflowingNodes()) {
-				this.createNewPage();
-				this.addListToLastPage();
-				this.moveItemToLastList(listItem);
-			}
+		this.listItems.forEach((listItem, index) => {
+            this.addContent(
+                () => {
+                    this.moveItemToLastList(listItem);
+                },
+                () => {
+                    this.addListToLastPage();
+                    this.moveItemToLastList(listItem);
+                }
+            );
 		});
 	}
 
 	addListToLastPage() {
 		let list = this.list.cloneNode();
 
-		this.moveNodeToLastPage(list);
+		this.moveNodeToLastContentDiv(list);
 
 		this.lists.push(list);
 	}

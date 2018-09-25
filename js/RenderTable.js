@@ -24,13 +24,16 @@ class RenderTable extends Renderer {
         this.addTableToLastPage();
 
 		this.tableRows.forEach((tableRow, index) => {
-            this.moveRowToLastTable(tableRow);
 
-			if (this.lastPageContainsOverflowingNodes()) {
-				this.createNewPage();
-				this.addTableToLastPage();
-				this.moveRowToLastTable(tableRow);
-            }
+            this.addContent(
+                () => {
+                    this.moveRowToLastTable(tableRow);
+                },
+                () => {
+                    this.addTableToLastPage();
+                    this.moveRowToLastTable(tableRow);
+                }
+            );
 		});
 
 		this.addFooterToLastTable();
@@ -39,7 +42,7 @@ class RenderTable extends Renderer {
 	addTableToLastPage() {
 		let table = this.table.cloneNode();
 
-		this.moveNodeToLastPage(table);
+		this.moveNodeToLastContentDiv(table);
 
 		this.tables.push(table);
 

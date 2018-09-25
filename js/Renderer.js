@@ -9,9 +9,7 @@
 
 class Renderer {
 	constructor(renderProperties) {
-		this.contentDestination = renderProperties.contentDestination;
-		this.templates = renderProperties.templates;
-		this.pages = renderProperties.pages;
+		this.renderProperties = renderProperties;
 	}
 
 	/**
@@ -22,9 +20,11 @@ class Renderer {
 	 * @returns {void}
 	 */
 	createNewPage() {
-		const page = this.templates.page.cloneNode(true);
-		this.pages.push(page);
-		this.contentDestination.appendChild(page);
+		const page = this.renderProperties.templates.page.cloneNode(true);
+		page.contentDivs = Array.from(page.querySelectorAll('.content'));
+
+        this.renderProperties.pages.push(page);
+        this.renderProperties.contentDestination.appendChild(page);
 	}
 
 	/**
@@ -35,6 +35,7 @@ class Renderer {
 	 */
     static createFirstPage(renderProperties){
 		const page = renderProperties.templates.firstPage.cloneNode(true);
+        page.contentDivs = Array.from(page.querySelectorAll('.content'));
 
 		renderProperties.pages.push(page);
 		renderProperties.contentDestination.appendChild(page);
@@ -46,7 +47,7 @@ class Renderer {
      * @returns {boolean}
      */
 	lastPageContainsOverflowingNodes() {
-		return this.pageContainsOverflowingNodes(this.pages[this.pages.length-1]);
+		return this.pageContainsOverflowingNodes(this.renderProperties.pages[this.renderProperties.pages.length-1]);
 	}
 
     /**
@@ -85,13 +86,28 @@ class Renderer {
 		return node.scrollHeight > node.offsetHeight;
 	}
 
-	/**
-	 * Append the given element to the latest page.
-	 * 
-	 * @param {Element} item 
-	 * @returns {void}
-	 */
-    moveNodeToLastPage(item) {
-		this.pages[this.pages.length-1].querySelector('.content').appendChild(item);
+    /**
+	 * Try to add content to the latest contentDiv
+	 *
+     * @param first: the first function to call
+     * @param second: function to call when first function results in overflow, after a new contentDiv is prepared
+     */
+	addContent(first, second = null) {
+        first();
+
+		if (this.lastPageContainsOverflowingNodes()) {
+			this.createNewPage();
+
+			if (second !== null) {
+				this.addContent(second);
+            }
+            else {
+                this.addContent(first);
+			}
+		}
+	}
+
+    moveNodeToLastContentDiv(item) {
+        this.renderProperties.pages[this.renderProperties.pages.length-1].querySelector('.content').appendChild(item);
 	}
 }
