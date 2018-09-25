@@ -31,17 +31,31 @@
         .firstPage .content {
             position: absolute;
 
+
+            background-color: gray;
+        }
+
+        .firstPage .first {
             left: 100px;
             right: 55%;
             top: 200px;
             bottom: 250px;
-            background-color: gray;
         }
 
         .firstPage .second {
+            top: 200px;
             right: 100px;
             left: 55%;
-            background-color: gray;
+
+            height: 300px;
+        }
+
+        .firstPage .third {
+            right: 100px;
+            left: 55%;
+
+            bottom: 250px;
+            height: 125px;
         }
 
         h1{
@@ -70,9 +84,9 @@
     <div id="js-CalculationTemplates">
         <div class="firstPage" data-template="firstPage">
             <h1>Dit is de afwijkende eerste pagina</h1>
-            <div class="content"></div>
-
+            <div class="content first"></div>
             <div class="content second"></div>
+            <div class="content third"></div>
             Footer
         </div>
 

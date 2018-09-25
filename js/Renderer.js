@@ -10,6 +10,10 @@
 class Renderer {
 	constructor(renderProperties) {
 		this.renderProperties = renderProperties;
+
+        if (!this.renderProperties.pages.length) {
+        	this.createNewPage(true);
+        }
 	}
 
 	/**
@@ -19,8 +23,16 @@ class Renderer {
 	 * 
 	 * @returns {void}
 	 */
-	createNewPage() {
-		const page = this.renderProperties.templates.page.cloneNode(true);
+	createNewPage(first = false) {
+        let page;
+
+		if (first) {
+            page = this.renderProperties.templates.firstPage.cloneNode(true);
+		}
+		else {
+            page = this.renderProperties.templates.page.cloneNode(true);
+		}
+
 		page.contentNodes = Array.from(page.querySelectorAll('.content')).map(( contentNode => {
             contentNode.active = false;
 			return contentNode;
@@ -30,25 +42,6 @@ class Renderer {
 
         this.renderProperties.pages.push(page);
         this.renderProperties.contentDestination.appendChild(page);
-	}
-
-	/**
-	 * Append the first page to the destination element.
-	 * 
-	 * @param {Object} renderProperties
-	 * @returns {void}
-	 */
-    static createFirstPage(renderProperties){
-		const page = renderProperties.templates.firstPage.cloneNode(true);
-        page.contentNodes = Array.from(page.querySelectorAll('.content')).map(( contentNode => {
-            contentNode.active = false;
-        	return contentNode;
-		}));
-
-        page.contentNodes[0].active = true;
-
-		renderProperties.pages.push(page);
-		renderProperties.contentDestination.appendChild(page);
 	}
 
     /**
@@ -103,6 +96,10 @@ class Renderer {
      * @param second: function to call when first function results in overflow, after a new contentNode is prepared
      */
 	addContent(first, second = null) {
+		if (!this.renderProperties.pages.length) {
+			this.createNewPage();
+		}
+
         first();
 
 		if (this.lastPageContainsOverflowingNodes()) {
