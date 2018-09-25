@@ -33,7 +33,7 @@ class Renderer {
 	 * @param {Object} renderProperties
 	 * @returns {void}
 	 */
-	createFirstPage(renderProperties){
+    static createFirstPage(renderProperties){
 		const page = renderProperties.templates.firstPage.cloneNode(true);
 
 		renderProperties.pages.push(page);

@@ -61,7 +61,7 @@ class ContentDivider{
 	 */
 	checkPrerequisites() {
 
-		return this.contentEl && this.contentItems.length > 0 && this.contentDestination;
+		return this.contentEl && this.contentItems.length > 0 && this.contentDestination && this.templates.hasOwnProperty('page');
 	}
 
 	/**
@@ -101,7 +101,7 @@ class ContentDivider{
 	 */
 	render() {
 		if(!this.checkPrerequisites()){
-			console.log('ContentDivider: could not start rendering: ' + contentId);
+			console.log('ContentDivider: could not start rendering');
 
 			return;
 		}
