@@ -30,8 +30,6 @@ class Renderer {
 
         this.renderProperties.pages.push(page);
         this.renderProperties.contentDestination.appendChild(page);
-
-        console.log(this.renderProperties);
 	}
 
 	/**
@@ -132,7 +130,7 @@ class Renderer {
     /**
 	 * Find the latest active contentNode
 	 *
-     * @returns {*}
+     * @returns null or Node
      */
 	getLastActiveContentNode() {
     	let activeContentNode = null;
@@ -146,18 +144,28 @@ class Renderer {
         return activeContentNode;
 	}
 
+    /**
+	 * Find the next inactive node on the last page
+	 *
+     * @returns null or Node
+     */
 	findNextInactiveContentNodeOnLastPage() {
 		let nextInactiveContentNode = null;
 
         this.renderProperties.pages[this.renderProperties.pages.length-1].contentNodes.forEach((contentNode) => {
-            if (contentNode.active === false) {
-                nextInactiveContentNode =  contentNode;
+            if (contentNode.active === false && nextInactiveContentNode === null) {
+                nextInactiveContentNode = contentNode;
             }
         });
 
         return nextInactiveContentNode;
 	}
 
+    /**
+     * Find the next inactive node on the last page
+     *
+     * @returns (void)
+     */
 	makeNextContentNodeActiveOrCreateNewPage() {
 		let nextContentNode = this.findNextInactiveContentNodeOnLastPage();
 

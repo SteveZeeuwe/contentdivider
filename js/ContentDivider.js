@@ -15,7 +15,6 @@ class ContentDivider{
 		this.contentDestination = this.getContentDestination();
 		this.templates = this.getTemplates();
 		this.pages = [];
-		this.contentDivs = [];
 	}
 
 	/**
@@ -61,7 +60,6 @@ class ContentDivider{
 	 * @returns {boolean}
 	 */
 	checkPrerequisites() {
-
 		return this.contentEl && this.contentItems.length > 0 && this.contentDestination && this.templates.hasOwnProperty('page') && this.templates.hasOwnProperty('firstPage');
 	}
 
