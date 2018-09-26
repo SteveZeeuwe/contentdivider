@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36eb5c80-e6e3-42ea-b510-85aad7368da6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/js/ContentDivider.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ContentDivider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/RenderList.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Renderers/RenderList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/RenderParagraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Renderers/RenderParagraph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/RenderSimple.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Renderers/RenderSimple.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/RenderTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Renderers/RenderTable.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +20,7 @@
         <state>
           <leaf>
             <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/js/RenderTable.js">
+              <entry file="file://$PROJECT_DIR$/js/Renderers/RenderTable.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="606">
                     <caret line="46" column="23" lean-forward="true" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
@@ -69,25 +73,25 @@
         <counts>
           <entry key="css" value="25" />
           <entry key="html" value="798" />
-          <entry key="js" value="6800" />
+          <entry key="js" value="6948" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="25" />
           <entry key="HTML" value="798" />
-          <entry key="JavaScript" value="6800" />
+          <entry key="JavaScript" value="6948" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+              <caret line="66" column="29" lean-forward="true" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -101,17 +105,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/ContentDivider.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-680">
-              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            <state relative-caret-position="2482">
+              <caret line="146" column="44" lean-forward="true" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/RenderList.js">
+        <entry file="file://$PROJECT_DIR$/js/Renderers/RenderList.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
               <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
@@ -120,7 +124,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/RenderParagraph.js">
+        <entry file="file://$PROJECT_DIR$/js/Renderers/RenderParagraph.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="544">
               <caret line="32" column="54" lean-forward="true" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
@@ -129,7 +133,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/RenderSimple.js">
+        <entry file="file://$PROJECT_DIR$/js/Renderers/RenderSimple.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
               <caret line="21" column="56" lean-forward="true" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
@@ -164,8 +168,8 @@
         <option value="$PROJECT_DIR$/js/RenderTable.js" />
         <option value="$PROJECT_DIR$/js/RenderParagraph.js" />
         <option value="$PROJECT_DIR$/js/Renderer.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/ContentDivider.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -194,6 +198,17 @@
             <path>
               <item name="contentdivider" type="b2602c69:ProjectViewProjectNode" />
               <item name="contentdivider" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="contentdivider" type="b2602c69:ProjectViewProjectNode" />
+              <item name="contentdivider" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="contentdivider" type="b2602c69:ProjectViewProjectNode" />
+              <item name="contentdivider" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="Renderers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -233,18 +248,17 @@
       <workItem from="1537778275193" duration="8698000" />
       <workItem from="1537801359496" duration="1768000" />
       <workItem from="1537861044224" duration="21156000" />
-      <workItem from="1537945720888" duration="7327000" />
+      <workItem from="1537945720888" duration="7838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40896000" />
+    <option name="totallyTimeSpent" value="41407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3834" y="0" width="1549" height="1694" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16453996" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16453996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -257,7 +271,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3196669" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3196669" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -272,28 +286,28 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/RenderTable.js">
+    <entry file="file://$PROJECT_DIR$/js/Renderers/RenderTable.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="606">
           <caret line="46" column="23" lean-forward="true" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/RenderParagraph.js">
+    <entry file="file://$PROJECT_DIR$/js/Renderers/RenderParagraph.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="54" lean-forward="true" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/RenderSimple.js">
+    <entry file="file://$PROJECT_DIR$/js/Renderers/RenderSimple.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="56" lean-forward="true" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/RenderList.js">
+    <entry file="file://$PROJECT_DIR$/js/Renderers/RenderList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
@@ -314,17 +328,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/ContentDivider.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+        <state relative-caret-position="2482">
+          <caret line="146" column="44" lean-forward="true" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/ContentDivider.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="357">
+          <caret line="66" column="29" lean-forward="true" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
         </state>
       </provider>
     </entry>
