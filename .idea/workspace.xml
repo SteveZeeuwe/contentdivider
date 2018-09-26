@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36eb5c80-e6e3-42ea-b510-85aad7368da6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ContentDivider.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ContentDivider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Renderers/RenderOrderedList.js.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Renderers/RenderOrderedList.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,49 +28,49 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="3" />
-          <entry key="html" value="14" />
-          <entry key="js" value="84" />
+          <entry key="html" value="15" />
+          <entry key="js" value="86" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="3" />
-          <entry key="HTML" value="14" />
-          <entry key="JavaScript" value="84" />
+          <entry key="HTML" value="15" />
+          <entry key="JavaScript" value="86" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="25" />
-          <entry key="html" value="1216" />
-          <entry key="js" value="7115" />
+          <entry key="html" value="1236" />
+          <entry key="js" value="7233" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="25" />
-          <entry key="HTML" value="1216" />
-          <entry key="JavaScript" value="7115" />
+          <entry key="HTML" value="1236" />
+          <entry key="JavaScript" value="7233" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="830">
-              <caret line="304" column="45" selection-start-line="304" selection-start-column="45" selection-end-line="304" selection-end-column="45" />
+            <state relative-caret-position="187">
+              <caret line="251" column="28" lean-forward="true" selection-start-line="251" selection-start-column="28" selection-end-line="251" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Renderer.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/Renderers/RenderOrderedList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="32" lean-forward="true" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+            <state relative-caret-position="425">
+              <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -93,6 +94,7 @@
       <find>id suscipit. Morbi</find>
       <find>console</find>
       <find>Vivamus fringilla eleifend mi a molestie. Pellentesque consectetur,</find>
+      <find>currant</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Yann Zeeuwe\Code\contentdivider</dir>
@@ -110,10 +112,11 @@
         <option value="$PROJECT_DIR$/js/RenderTable.js" />
         <option value="$PROJECT_DIR$/js/RenderParagraph.js" />
         <option value="$PROJECT_DIR$/js/Renderers/RenderTable.js" />
-        <option value="$PROJECT_DIR$/js/Renderers/RenderOrderedList.js.js" />
         <option value="$PROJECT_DIR$/js/Renderer.js" />
         <option value="$PROJECT_DIR$/js/ContentDivider.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/Renderers/RenderOrderedList.js.js" />
+        <option value="$PROJECT_DIR$/js/Renderers/RenderOrderedList.js" />
       </list>
     </option>
   </component>
@@ -200,12 +203,12 @@
       <workItem from="1537778275193" duration="8698000" />
       <workItem from="1537801359496" duration="1768000" />
       <workItem from="1537861044224" duration="21156000" />
-      <workItem from="1537945720888" duration="12883000" />
+      <workItem from="1537945720888" duration="13350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46452000" />
+    <option name="totallyTimeSpent" value="46919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3834" y="0" width="1549" height="1694" extended-state="0" />
@@ -274,13 +277,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Renderers/RenderOrderedList.js.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/Renderer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -297,8 +293,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="830">
-          <caret line="304" column="45" selection-start-line="304" selection-start-column="45" selection-end-line="304" selection-end-column="45" />
+        <state relative-caret-position="187">
+          <caret line="251" column="28" lean-forward="true" selection-start-line="251" selection-start-column="28" selection-end-line="251" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Renderers/RenderOrderedList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
         </state>
       </provider>
     </entry>

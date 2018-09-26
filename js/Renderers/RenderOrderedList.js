@@ -17,6 +17,7 @@ class RenderOrderedList extends Renderer {
 		this.listItems = Array.from(ul.children);
 
 		this.lists = [];
+		this.counter = 1;
 	}
 
 	render() {
@@ -32,11 +33,14 @@ class RenderOrderedList extends Renderer {
                     this.moveItemToLastList(listItem);
                 }
             );
+
+            this.counter++;
 		});
 	}
 
 	addListToLastContentNode() {
 		let list = this.list.cloneNode();
+		list.setAttribute('start', this.counter);
 
 		this.moveNodeToLastContentNode(list);
 
