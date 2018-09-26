@@ -95,8 +95,9 @@ class ContentDivider{
 	}
 
 	/**
-	 * Render all content items by using the relevant render object.
-	 * TODO: figure out whether it is better to re-use the renderers.
+	 * Check whether all is good to go
+	 * Start rendering the content from its origin to the templates
+	 * Cleanup possible unnecessary DOM elements
 	 *
 	 * @returns {void}
 	 */
@@ -114,7 +115,7 @@ class ContentDivider{
 	}
 
     /**
-	 * Loop through all nodes and call specific RenderClasses depending on the nodeName
+	 * Render all content items by using the relevant render object.
 	 *
 	 * @returns {void}
      */
@@ -151,7 +152,7 @@ class ContentDivider{
 	}
 
     /**
-	 * Remove all direct child-nodes from contentNodes with 0 height from the DOM
+	 * Remove all direct child-nodes from all contentNodes with 0 height from the DOM
 	 *
 	 * @returns {void}
      */
