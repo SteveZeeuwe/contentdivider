@@ -87,7 +87,7 @@ class ContentDivider{
 					return;
 				}
 
-				console.log('ContentDivider: page template not found for: ' + this.contentId);
+				console.log('ContentDivider: page template not found for');
 			});
 		}
 
@@ -125,7 +125,7 @@ class ContentDivider{
             templates: this.templates,
             pages: this.pages,
             contentEl: this.contentEl
-    };
+    	};
 
         this.contentItems.forEach((contentItem, index) => {
             let renderer = null;
@@ -139,7 +139,10 @@ class ContentDivider{
                         renderer = new RenderParagraph(renderProperties, contentItem);
                         break;
                     case 'UL':
-                        renderer = new RenderList(renderProperties, contentItem);
+                        renderer = new RenderUnorderedList(renderProperties, contentItem);
+                        break;
+                    case 'OL':
+                        renderer = new RenderOrderedList(renderProperties, contentItem);
                         break;
                     case 'TABLE':
                         renderer = new RenderTable(renderProperties, contentItem);

@@ -1,5 +1,5 @@
 /**
- * @file RenderList.js
+ * @file RenderUnorderedList.jsedList.js
  *
  * Renders a list item by item
  *
@@ -9,7 +9,7 @@
  * @version 1.0.0
  */
 
-class RenderList extends Renderer {
+class RenderUnorderedList extends Renderer {
 	constructor(renderProperties, ul) {
 		super(renderProperties);
 		
