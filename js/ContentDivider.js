@@ -107,19 +107,31 @@ class ContentDivider{
 			return;
 		}
 
-		const renderProperties = {
-			contentDestination: this.contentDestination,
-			templates: this.templates,
-			pages: this.pages
-		};
+		this.renderNodes();
+		this.cleanDOM();
 
-		this.contentItems.forEach((contentItem, index) => {
-			let renderer = null;
+		return;
+	}
 
-			if (contentItem.dataset.hasOwnProperty('unbreaking')) {
+    /**
+	 * Loop through all nodes and call specific RenderClasses depending on the nodeName
+	 *
+	 * @returns {void}
+     */
+	renderNodes() {
+        const renderProperties = {
+            contentDestination: this.contentDestination,
+            templates: this.templates,
+            pages: this.pages
+        };
+
+        this.contentItems.forEach((contentItem, index) => {
+            let renderer = null;
+
+            if (contentItem.dataset.hasOwnProperty('unbreaking')) {
                 renderer = new RenderSimple(renderProperties, contentItem);
-			}
-			else {
+            }
+            else {
                 switch (contentItem.nodeName) {
                     case 'P':
                         renderer = new RenderParagraph(renderProperties, contentItem);
@@ -134,13 +146,20 @@ class ContentDivider{
                         renderer = new RenderSimple(renderProperties, contentItem);
                 }
             }
-			renderer.render();
-		});
-
-		return;
+            renderer.render();
+        });
 	}
 
-	renderNodes() {
-
+    /**
+	 * Remove all direct child-nodes from contentNodes with 0 height from the DOM
+	 *
+	 * @returns {void}
+     */
+	cleanDOM() {
+        Array.from(this.contentDestination.querySelectorAll('.content > *')).forEach((node) => {
+        	if (node.offsetHeight === 0) {
+                node.remove();
+			}
+		});
 	}
 }
