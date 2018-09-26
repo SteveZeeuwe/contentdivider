@@ -20,7 +20,8 @@ class RenderSimple extends Renderer {
         this.addContent(
 			() => {
 				this.moveNodeToLastContentNode(this.contentItem);
-			}
+			},
+			true
 		);
 	}
 }

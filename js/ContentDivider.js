@@ -139,4 +139,8 @@ class ContentDivider{
 
 		return;
 	}
+
+	renderNodes() {
+
+	}
 }

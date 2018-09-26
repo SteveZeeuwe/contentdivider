@@ -98,21 +98,16 @@ class Renderer {
      * @param second: function to call when first function results in overflow, after a new contentNode is prepared
      */
 	addContent(first, second = null) {
-		if (!this.renderProperties.pages.length) {
-			this.createNewPage();
-		}
-
         first();
 
 		if (this.lastPageContainsOverflowingNodes()) {
-
 			this.makeNextContentNodeActiveOrCreateNewPage();
 
-			if (second !== null) {
-				this.addContent(second, () => {});
+			if (typeof second === 'function') {
+                this.addContent(second, true);
             }
-            else {
-                this.addContent(first, () => {});
+            else if (second === true) {
+				this.addContent(first, true);
 			}
 		}
 	}

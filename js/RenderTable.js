@@ -45,9 +45,13 @@ class RenderTable extends Renderer {
                     this.moveRowToLastTable(tableRow);
                 },
                 () => {
-                	console.log('move table');
-                    this.addTableToLastContentNode();
-                    this.moveRowToLastTable(tableRow);
+					//tablerow weghalen
+					let tableRowClone = tableRow.cloneNode(true);
+					tableRow.remove ();
+
+					this.addTableToLastContentNode();
+
+					this.moveRowToLastTable(tableRowClone);
                 }
             );
 		});
@@ -56,14 +60,19 @@ class RenderTable extends Renderer {
 	}
 
 	addTableToLastContentNode() {
-		let table = this.table.cloneNode();
+        let table = this.table.cloneNode();
 
-		this.moveNodeToLastContentNode(table);
+        this.tables.push(table);
 
-		this.tables.push(table);
+        this.addHeaderToLastTable();
+        this.addBodyToLastTable();
 
-		this.addHeaderToLastTable();
-		this.addBodyToLastTable();
+        this.addContent(
+            () => {
+                this.moveNodeToLastContentNode(table);
+            },
+			true
+        );
 	}
 
 	moveRowToLastTable(tableRow) {
