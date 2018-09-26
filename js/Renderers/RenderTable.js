@@ -46,12 +46,11 @@ class RenderTable extends Renderer {
                 },
                 () => {
 					//tablerow weghalen
-					let tableRowClone = tableRow.cloneNode(true);
-					tableRow.remove ();
+					this.renderProperties.contentEl.appendChild(tableRow);
 
 					this.addTableToLastContentNode();
 
-					this.moveRowToLastTable(tableRowClone);
+					this.moveRowToLastTable(tableRow);
                 }
             );
 		});

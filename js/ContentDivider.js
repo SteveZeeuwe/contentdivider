@@ -123,8 +123,9 @@ class ContentDivider{
         const renderProperties = {
             contentDestination: this.contentDestination,
             templates: this.templates,
-            pages: this.pages
-        };
+            pages: this.pages,
+            contentEl: this.contentEl
+    };
 
         this.contentItems.forEach((contentItem, index) => {
             let renderer = null;
