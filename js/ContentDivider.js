@@ -11,12 +11,16 @@
  */
 
 class ContentDivider{
-	constructor(contentId){
+	constructor(contentId, autostart = false){
 		this.contentEl = this.getContentEl(contentId);
 		this.contentItems = this.getContentItems();
 		this.contentDestination = this.getContentDestination();
 		this.templates = this.getTemplates();
 		this.pages = [];
+
+		if (autostart === true) {
+			this.render();
+		}
 	}
 
 	/**
