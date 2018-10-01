@@ -5,16 +5,22 @@
  * Create relevant renderer to render content onto page templates.
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
  * @version 1.0.0
  */
 
 class ContentDivider{
-	constructor(contentId){
+	constructor(contentId, autostart = false){
 		this.contentEl = this.getContentEl(contentId);
 		this.contentItems = this.getContentItems();
 		this.contentDestination = this.getContentDestination();
 		this.templates = this.getTemplates();
 		this.pages = [];
+
+		if (autostart === true) {
+			this.render();
+		}
 	}
 
 	/**
@@ -60,8 +66,7 @@ class ContentDivider{
 	 * @returns {boolean}
 	 */
 	checkPrerequisites() {
-
-		return this.contentEl && this.contentItems.length > 0 && this.contentDestination;
+		return this.contentEl && this.contentItems.length > 0 && this.contentDestination && this.templates.hasOwnProperty('page') && this.templates.hasOwnProperty('firstPage');
 	}
 
 	/**
@@ -86,7 +91,7 @@ class ContentDivider{
 					return;
 				}
 
-				console.log('ContentDivider: page template not found for: ' + this.contentId);
+				console.log('ContentDivider: page template not found for');
 			});
 		}
 
@@ -94,46 +99,76 @@ class ContentDivider{
 	}
 
 	/**
-	 * Render all content items by using the relevant render object.
-	 * TODO: figure out whether it is better to re-use the renderers.
+	 * Check whether all is good to go
+	 * Start rendering the content from its origin to the templates
+	 * Cleanup possible unnecessary DOM elements
 	 *
 	 * @returns {void}
 	 */
 	render() {
 		if(!this.checkPrerequisites()){
-			console.log('ContentDivider: could not start rendering: ' + contentId);
+			console.log('ContentDivider: could not start rendering');
 
 			return;
 		}
 
-		const renderProperties = {
-			contentDestination: this.contentDestination,
-			templates: this.templates,
-			pages: this.pages,
-		}
-
-		Renderer.createFirstPage(renderProperties);
-
-		this.contentItems.forEach((contentItem, index) => {
-			let renderer = null;
-
-			switch(contentItem.nodeName) {
-				case 'P':
-					renderer = new RenderParagraph(renderProperties, contentItem);
-					break;
-				case 'UL':
-					renderer = new RenderList(renderProperties, contentItem);
-					break;
-				case 'TABLE':
-					renderer = new RenderTable(renderProperties, contentItem);
-					break;
-				default:
-					renderer = new RenderSimple(renderProperties, contentItem);
-			}
-
-			renderer.render();
-		});
+		this.renderNodes();
+		this.cleanDOM();
 
 		return;
+	}
+
+    /**
+	 * Render all content items by using the relevant render object.
+	 *
+	 * @returns {void}
+     */
+	renderNodes() {
+        const renderProperties = {
+            contentDestination: this.contentDestination,
+            templates: this.templates,
+            pages: this.pages,
+            contentEl: this.contentEl
+    	};
+
+        this.contentItems.forEach((contentItem, index) => {
+            let renderer = null;
+
+            if (contentItem.dataset.hasOwnProperty('unbreaking')) {
+                renderer = new RenderSimple(renderProperties, contentItem);
+            }
+            else {
+                switch (contentItem.nodeName) {
+                    case 'P':
+                        renderer = new RenderParagraph(renderProperties, contentItem);
+                        break;
+                    case 'UL':
+                        renderer = new RenderUnorderedList(renderProperties, contentItem);
+                        break;
+                    case 'OL':
+                        renderer = new RenderOrderedList(renderProperties, contentItem);
+                        break;
+                    case 'TABLE':
+                        renderer = new RenderTable(renderProperties, contentItem);
+                        break;
+                    default:
+                        renderer = new RenderSimple(renderProperties, contentItem);
+                }
+            }
+            renderer.render();
+        });
+	}
+
+    /**
+	 * Remove all direct child-nodes from all contentNodes with 0 height from the DOM
+	 *
+	 * @returns {void}
+     */
+	cleanDOM() {
+        Array.from(this.contentDestination.querySelectorAll('.content > *')).forEach((node) => {
+        	if (node.offsetHeight === 0) {
+                node.remove();
+			}
+		});
 	}
 }

@@ -4,14 +4,18 @@
  * Base renderer to be extended by specific render classes.
  *
  * @author Steve Zeeuwe <szeeuwe@gmail.com>
+ * @author Yann Zeeuwe <yannzeeuwe@gmail.com>
+ *
  * @version 1.0.0
  */
 
 class Renderer {
 	constructor(renderProperties) {
-		this.contentDestination = renderProperties.contentDestination;
-		this.templates = renderProperties.templates;
-		this.pages = renderProperties.pages;
+		this.renderProperties = renderProperties;
+
+        if (!this.renderProperties.pages.length) {
+        	this.createNewPage(true);
+        }
 	}
 
 	/**
@@ -21,45 +25,149 @@ class Renderer {
 	 * 
 	 * @returns {void}
 	 */
-	createNewPage() {
-		const page = this.templates.page.cloneNode(true);
-		this.removeOverflowLastPage();
-		this.pages.push(page);
-		this.contentDestination.appendChild(page);
+	createNewPage(first = false) {
+        let page;
+
+		if (first) {
+            page = this.renderProperties.templates.firstPage.cloneNode(true);
+		}
+		else {
+            page = this.renderProperties.templates.page.cloneNode(true);
+		}
+
+		page.contentNodes = Array.from(page.querySelectorAll('.content')).map(( contentNode => {
+            contentNode.active = false;
+			return contentNode;
+		}));
+
+		page.contentNodes[0].active = true;
+
+        this.renderProperties.pages.push(page);
+        this.renderProperties.contentDestination.appendChild(page);
 	}
 
-	/**
-	 * Append the first page to the destination element.
-	 * 
-	 * @param {Object} renderProperties
-	 * @returns {void}
-	 */
-	static createFirstPage(renderProperties){
-		const page = renderProperties.templates.firstPage.cloneNode(true);
-
-		renderProperties.pages.push(page);
-		renderProperties.contentDestination.appendChild(page);
+    /**
+	 * Do an overflow check specifically for the last page
+	 *
+     * @returns {boolean}
+     */
+	lastPageContainsOverflowingNodes() {
+		return this.pageContainsOverflowingNodes(this.renderProperties.pages[this.renderProperties.pages.length-1]);
 	}
 
-	/**
-	 * When the current page overflows I immediately remove the last added element
-	 * to stop the overflowing. Sadly the browser is not smart enough to check if 
-	 * removing the scrollbar would result in potentially not needing the scrollbar 
-	 * anymore. For this edgecase I have to explicitly set the overflow to hidden.* 
-	 * 
-	 * @returns {void}
-	 */
-	removeOverflowLastPage() {
-		this.pages[this.pages.length-1].classList.add('Full');
+    /**
+	 * Check whether there are overflowing content nodes on this page
+	 * Also checks the overflowing of the page itself.
+	 *
+     * @param page
+     * @returns {boolean}
+     */
+	pageContainsOverflowingNodes(page) {
+        let nodes = [page];
+        let overflow = false;
+
+        page.querySelectorAll('.content').forEach((node) => {
+        	nodes.push(node);
+		});
+
+        nodes.forEach((node) => {
+            if (this.nodeOverflows(node)) {
+                overflow = true;
+            }
+        });
+
+        return overflow;
 	}
 
-	/**
-	 * Append the given element to the latest page.
-	 * 
-	 * @param {Element} item 
-	 * @returns {void}
-	 */
-	addItemToLastPage(item) {
-		this.pages[this.pages.length-1].querySelector('.content').appendChild(item);
+    /**
+	 * Check whether a single node is overflowing
+	 * Requirement: the overflow CSS property of this node may not be 'default'
+	 * If not set, the browser automatically sets this property to 'default'.
+	 *
+     * @param node
+     * @returns {boolean}
+     */
+	nodeOverflows(node) {
+		return node.scrollHeight > node.offsetHeight;
+	}
+
+    /**
+	 * Try to add content to the latest contentNode
+	 *
+     * @param first: the first function to call
+     * @param second: function to call when first function results in overflow, after a new contentNode is prepared
+     */
+	addContent(first, second = null) {
+        first();
+
+		if (this.lastPageContainsOverflowingNodes()) {
+			this.makeNextContentNodeActiveOrCreateNewPage();
+
+			if (typeof second === 'function') {
+                this.addContent(second, true);
+            }
+            else if (second === true) {
+				this.addContent(first, true);
+			}
+		}
+	}
+
+    /**
+	 * Move a node to the last contentNode
+	 *
+     * @param item
+     */
+    moveNodeToLastContentNode(item) {
+        this.getLastActiveContentNode().appendChild(item);
+	}
+
+    /**
+	 * Find the latest active contentNode
+	 *
+     * @returns null or Node
+     */
+	getLastActiveContentNode() {
+    	let activeContentNode = null;
+
+        this.renderProperties.pages[this.renderProperties.pages.length-1].contentNodes.forEach((contentNode) => {
+			if (contentNode.active) {
+                activeContentNode =  contentNode;
+			}
+		});
+
+        return activeContentNode;
+	}
+
+    /**
+	 * Find the next inactive node on the last page
+	 *
+     * @returns null or Node
+     */
+	findNextInactiveContentNodeOnLastPage() {
+		let nextInactiveContentNode = null;
+
+        this.renderProperties.pages[this.renderProperties.pages.length-1].contentNodes.forEach((contentNode) => {
+            if (contentNode.active === false && nextInactiveContentNode === null) {
+                nextInactiveContentNode = contentNode;
+            }
+        });
+
+        return nextInactiveContentNode;
+	}
+
+    /**
+     * Find the next inactive node on the last page
+     *
+     * @returns (void)
+     */
+	makeNextContentNodeActiveOrCreateNewPage() {
+		let nextContentNode = this.findNextInactiveContentNodeOnLastPage();
+
+        if (nextContentNode !== null) {
+            nextContentNode.active = true;
+        }
+        else {
+            this.createNewPage();
+		}
 	}
 }
